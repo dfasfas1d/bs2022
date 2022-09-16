@@ -30,11 +30,13 @@ server.get('/', (req, res, next) => {
 //Quary String에 대하여 알아보자
 server.get('/study', (req, res, next) => {
 
-    // http://localhost/study?id=1234&name=백석대
+    // http://localhost/study?id=20172465&name=엄기천
 
+    //이건 기본값
     let student = {
-        id : 0,
-        name : "손님"
+        id : 20172465,
+        name : "엄기천",
+        age : 25
     }
 
     if(req.query.id !== null && req.query.id !== undefined){
@@ -42,6 +44,9 @@ server.get('/study', (req, res, next) => {
     }
     if(req.query.name !== null && req.query.name !== undefined){
         student.name = req.query.name;
+    }
+    if(req.query.name !== null && req.query.name !== undefined){
+        student.age = req.query.age;
     }
   
     console.log(student);
@@ -52,7 +57,7 @@ server.get('/study', (req, res, next) => {
 //구구단 페이지
 server.get('/99dan',  (req, res, next) => {
 
-    // http://localhost/study?primary=8
+    // http://localhost/99dan?primary=8
 
     let gugudan = {
         primary : 2,
@@ -61,7 +66,9 @@ server.get('/99dan',  (req, res, next) => {
 
     if(req.query.primary !== null && req.query.primary !== undefined){
         gugudan.primary = req.query.primary;
+        gugudan.primary2 = parseInt(gugudan.primary)+1
     }
+
   
     res.render("99dan.html", gugudan);
 });
